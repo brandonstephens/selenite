@@ -1,0 +1,199 @@
+/*
+ * Alabaster Mono — ported from tonsky/sublime-scheme-alabaster
+ * Monochromatic variant: only the cursor and occasional errors/search
+ * results are colored. Everything else is black text with subtle grey
+ * background tints to mark strings/constants/definitions.
+ */
+
+meta {
+  -theme-display-name: 'Alabaster Mono';
+  -theme-interface-style: light;
+  -theme-vibrancy: none;
+  -theme-accent-color: #16BDEC;
+}
+
+/*
+ * Window styles
+ */
+meta.window {
+  background-color: #F0F0F0;
+  border-color: #D8D8D8;
+}
+meta.titlebar {
+  background-color: #F0F0F0;
+  color: #000000;
+  border-color: #D8D8D8;
+}
+meta.titlebar.inactive {
+  background-color: #F0F0F0;
+  color: #8A8A8A;
+}
+
+meta.button {
+  background-color: #E6E6E6;
+  border-color: #D2D2D2;
+  color: #000000;
+}
+meta.button.highlighted {
+  background-color: #D2D2D2;
+  border-color: #C0C0C0;
+  color: #000000;
+}
+meta.button.disabled {
+  background-color: #F5F5F5;
+  border-color: #E2E2E2;
+  color: #A6A6A6;
+}
+
+meta.textfield,
+meta.textfield.active {
+  background-color: #FFFFFF;
+  border-color: #D8D8D8;
+}
+
+/*
+ * Document styles
+ */
+meta.document {
+  background-color: #FFFFFF;
+  border-color: #D8D8D8;
+}
+meta.document.button {
+  background-color: #E6E6E6;
+  border-color: #D2D2D2;
+  color: #000000;
+}
+meta.document.textfield {
+  background-color: #FFFFFF;
+  border-color: #D8D8D8;
+}
+
+meta.text {
+  color: #000000;
+}
+meta.text.selected {
+  background-color: #B3D7FF;
+}
+
+meta.cursor {
+  background-color: #16BDEC;
+}
+
+meta.indentguide {
+  border-color: #E6E6E6;
+}
+
+meta.gutter {
+  color: #A0A0A0;
+}
+meta.gutter.selected {
+  color: #000000;
+}
+
+/*
+ * Syntax styles
+ */
+
+/* Comments */
+comment {
+  color: #999999;
+}
+
+/* Strings */
+string,
+string-template,
+string-template.value,
+string.key,
+cdata,
+regex {
+  background-color: #EEEEEE;
+}
+string.escape,
+regex.escaped {
+  background-color: #D9D9D9;
+}
+
+/* Constants — numbers, symbols, keywords, booleans */
+value,
+value.boolean,
+value.null,
+value.number,
+value.entity,
+value.symbols,
+identifier.constant {
+  background-color: #EEEEEE;
+}
+
+/* Global definitions */
+definition,
+definition.type,
+definition.class,
+definition.protocol,
+definition.enum,
+definition.union,
+definition.struct,
+definition.package,
+definition.property,
+definition.function,
+definition.method,
+identifier.global {
+  background-color: #EEEEEE;
+}
+
+/* Mistakes */
+invalid {
+  color: #cc3333;
+  background-color: #FFE4E4;
+}
+
+/*
+ * Terminal — kept mostly monochrome, with the cursor cyan doubling as blue
+ */
+terminal.black {
+  color: #000000;
+}
+terminal.red {
+  color: #cc3333;
+}
+terminal.green {
+  color: #666666;
+}
+terminal.yellow {
+  color: #999999;
+}
+terminal.blue {
+  color: #16BDEC;
+}
+terminal.magenta {
+  color: #666666;
+}
+terminal.cyan {
+  color: #16BDEC;
+}
+terminal.white {
+  color: #999999;
+}
+terminal.bright-black {
+  color: #444444;
+}
+terminal.bright-red {
+  color: #E05252;
+}
+terminal.bright-green {
+  color: #808080;
+}
+terminal.bright-yellow {
+  color: #B3B3B3;
+}
+terminal.bright-blue {
+  color: #5DD1F5;
+}
+terminal.bright-magenta {
+  color: #808080;
+}
+terminal.bright-cyan {
+  color: #5DD1F5;
+}
+terminal.bright-white {
+  color: #CCCCCC;
+}

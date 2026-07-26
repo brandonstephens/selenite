@@ -1,0 +1,205 @@
+/*
+ * Alabaster Dark Mono — ported from tonsky/sublime-scheme-alabaster
+ * Monochromatic dark variant. Body text sits at a dim grey; strings,
+ * constants, definitions and brackets pop to a brighter white to stay
+ * scannable without introducing hue.
+ */
+
+meta {
+  -theme-display-name: 'Alabaster Dark Mono';
+  -theme-interface-style: dark;
+  -theme-vibrancy: none;
+  -theme-accent-color: #CD974B;
+}
+
+/*
+ * Window styles
+ */
+meta.window {
+  background-color: #0B0B0B;
+  border-color: #292929;
+}
+meta.titlebar {
+  background-color: #0B0B0B;
+  color: #999999;
+  border-color: #292929;
+}
+meta.titlebar.inactive {
+  background-color: #0B0B0B;
+  color: #5C5C5C;
+}
+
+meta.button {
+  background-color: #1C1C1C;
+  border-color: #2E2E2E;
+  color: #999999;
+}
+meta.button.highlighted {
+  background-color: #2E2E2E;
+  border-color: #3D3D3D;
+  color: #999999;
+}
+meta.button.disabled {
+  background-color: #0B0B0B;
+  border-color: #1C1C1C;
+  color: #4A4A4A;
+}
+
+meta.textfield,
+meta.textfield.active {
+  background-color: #0D0D0D;
+  border-color: #292929;
+}
+
+/*
+ * Document styles
+ */
+meta.document {
+  background-color: #111111;
+  border-color: #292929;
+}
+meta.document.button {
+  background-color: #1C1C1C;
+  border-color: #2E2E2E;
+  color: #999999;
+}
+meta.document.textfield {
+  background-color: #0D0D0D;
+  border-color: #292929;
+}
+
+meta.text {
+  color: #999999;
+}
+meta.text.selected {
+  background-color: #2F2F2F;
+}
+
+meta.cursor {
+  background-color: #CD974B;
+}
+
+meta.indentguide {
+  border-color: #232323;
+}
+
+meta.gutter {
+  color: #4A4A4A;
+}
+meta.gutter.selected {
+  color: #EEEEEE;
+}
+
+/*
+ * Syntax styles
+ */
+
+/* Comments */
+comment {
+  background-color: #333333;
+}
+
+/* Strings */
+string,
+string-template,
+string-template.value,
+string.key,
+cdata,
+regex {
+  color: #EEEEEE;
+}
+string.escape,
+regex.escaped {
+  background-color: #ffffff20;
+}
+
+/* Constants — numbers, symbols, keywords, booleans */
+value,
+value.boolean,
+value.null,
+value.number,
+value.entity,
+value.symbols,
+identifier.constant {
+  color: #EEEEEE;
+}
+
+/* Global definitions */
+definition,
+definition.type,
+definition.class,
+definition.protocol,
+definition.enum,
+definition.union,
+definition.struct,
+definition.package,
+definition.property,
+definition.function,
+definition.method,
+identifier.global {
+  color: #EEEEEE;
+  background-color: #333333;
+}
+
+/* Brackets are brightened above the dim ambient body text */
+bracket {
+  color: #EEEEEE;
+}
+
+/* Mistakes */
+invalid {
+  color: #cc3333;
+  background-color: #2B1D1E;
+}
+
+/*
+ * Terminal
+ */
+terminal.black {
+  color: #111111;
+}
+terminal.red {
+  color: #cc3333;
+}
+terminal.green {
+  color: #888888;
+}
+terminal.yellow {
+  color: #AAAAAA;
+}
+terminal.blue {
+  color: #CD974B;
+}
+terminal.magenta {
+  color: #888888;
+}
+terminal.cyan {
+  color: #CD974B;
+}
+terminal.white {
+  color: #999999;
+}
+terminal.bright-black {
+  color: #4A4A4A;
+}
+terminal.bright-red {
+  color: #E05252;
+}
+terminal.bright-green {
+  color: #CCCCCC;
+}
+terminal.bright-yellow {
+  color: #EEEEEE;
+}
+terminal.bright-blue {
+  color: #E0AD6C;
+}
+terminal.bright-magenta {
+  color: #CCCCCC;
+}
+terminal.bright-cyan {
+  color: #E0AD6C;
+}
+terminal.bright-white {
+  color: #FFFFFF;
+}

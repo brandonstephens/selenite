@@ -1,0 +1,206 @@
+/*
+ * Alabaster — ported from tonsky/sublime-scheme-alabaster
+ * Original scheme highlights just four things: strings, constants,
+ * comments and global definitions. Standard keywords are intentionally
+ * left unstyled.
+ */
+
+meta {
+  -theme-display-name: 'Alabaster';
+  -theme-interface-style: light;
+  -theme-vibrancy: none;
+  -theme-accent-color: #007ACC;
+}
+
+/*
+ * Window styles
+ */
+meta.window {
+  background-color: #ECECEC;
+  border-color: #D6D6D6;
+}
+meta.titlebar {
+  background-color: #ECECEC;
+  color: #000000;
+  border-color: #D6D6D6;
+}
+meta.titlebar.inactive {
+  background-color: #ECECEC;
+  color: #8A8A8A;
+}
+
+meta.button {
+  background-color: #E3E3E3;
+  border-color: #D0D0D0;
+  color: #000000;
+}
+meta.button.highlighted {
+  background-color: #D0D0D0;
+  border-color: #BEBEBE;
+  color: #000000;
+}
+meta.button.disabled {
+  background-color: #F2F2F2;
+  border-color: #E0E0E0;
+  color: #A0A0A0;
+}
+
+meta.textfield,
+meta.textfield.active {
+  background-color: #FFFFFF;
+  border-color: #D6D6D6;
+}
+
+/*
+ * Document styles
+ */
+meta.document {
+  background-color: #F7F7F7;
+  border-color: #D6D6D6;
+}
+meta.document.button {
+  background-color: #E3E3E3;
+  border-color: #D0D0D0;
+  color: #000000;
+}
+meta.document.textfield {
+  background-color: #FFFFFF;
+  border-color: #D6D6D6;
+}
+
+meta.text {
+  color: #000000;
+}
+meta.text.selected {
+  background-color: #BFDBFE;
+}
+
+meta.cursor {
+  background-color: #007ACC;
+}
+
+meta.indentguide {
+  border-color: #E3E3E3;
+}
+
+meta.gutter {
+  color: #B0B0B0;
+}
+meta.gutter.selected {
+  color: #000000;
+}
+
+/*
+ * Syntax styles — the four Alabaster classes
+ */
+
+/* Comments */
+comment {
+  color: #AA3731;
+}
+
+/* Strings */
+string,
+string-template,
+string-template.value,
+string.key,
+cdata,
+regex {
+  color: #448C27;
+}
+string.escape,
+regex.escaped {
+  color: #777777;
+}
+
+/* Constants — numbers, symbols, keywords, booleans */
+value,
+value.boolean,
+value.null,
+value.number,
+value.entity,
+value.symbols,
+identifier.constant {
+  color: #7A3E9D;
+}
+
+/* Global definitions */
+definition,
+definition.type,
+definition.class,
+definition.protocol,
+definition.enum,
+definition.union,
+definition.struct,
+definition.package,
+definition.property,
+definition.function,
+definition.method,
+identifier.global {
+  color: #325CC0;
+}
+
+/* Punctuation & operators are dimmed as a single class in this variant */
+bracket,
+operator,
+keyword.operator {
+  color: #777777;
+}
+
+/* Mistakes */
+invalid {
+  color: #AA3731;
+  background-color: rgba(170, 55, 49, 0.2);
+}
+
+/*
+ * Terminal
+ */
+terminal.black {
+  color: #000000;
+}
+terminal.red {
+  color: #AA3731;
+}
+terminal.green {
+  color: #448C27;
+}
+terminal.yellow {
+  color: #FFBC5D;
+}
+terminal.blue {
+  color: #325CC0;
+}
+terminal.magenta {
+  color: #7A3E9D;
+}
+terminal.cyan {
+  color: #007ACC;
+}
+terminal.white {
+  color: #777777;
+}
+terminal.bright-black {
+  color: #444444;
+}
+terminal.bright-red {
+  color: #C24B44;
+}
+terminal.bright-green {
+  color: #5AA836;
+}
+terminal.bright-yellow {
+  color: #FFCB7A;
+}
+terminal.bright-blue {
+  color: #4F79DE;
+}
+terminal.bright-magenta {
+  color: #9757BC;
+}
+terminal.bright-cyan {
+  color: #1F9CE8;
+}
+terminal.bright-white {
+  color: #999999;
+}

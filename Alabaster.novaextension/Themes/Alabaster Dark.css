@@ -1,0 +1,198 @@
+/*
+ * Alabaster Dark — ported from tonsky/sublime-scheme-alabaster
+ * A dark version of Alabaster built on the same principles: minimal
+ * highlighting, no styling of standard keywords.
+ */
+
+meta {
+  -theme-display-name: 'Alabaster Dark';
+  -theme-interface-style: dark;
+  -theme-vibrancy: none;
+  -theme-accent-color: #CD974B;
+}
+
+/*
+ * Window styles
+ */
+meta.window {
+  background-color: #0A0F10;
+  border-color: #232B2C;
+}
+meta.titlebar {
+  background-color: #0A0F10;
+  color: #CECECE;
+  border-color: #232B2C;
+}
+meta.titlebar.inactive {
+  background-color: #0A0F10;
+  color: #6E7B7C;
+}
+
+meta.button {
+  background-color: #1B2224;
+  border-color: #2B3335;
+  color: #CECECE;
+}
+meta.button.highlighted {
+  background-color: #2B3335;
+  border-color: #3A4345;
+  color: #CECECE;
+}
+meta.button.disabled {
+  background-color: #0A0F10;
+  border-color: #1B2224;
+  color: #5A6567;
+}
+
+meta.textfield,
+meta.textfield.active {
+  background-color: #0B1112;
+  border-color: #232B2C;
+}
+
+/*
+ * Document styles
+ */
+meta.document {
+  background-color: #0E1415;
+  border-color: #232B2C;
+}
+meta.document.button {
+  background-color: #1B2224;
+  border-color: #2B3335;
+  color: #CECECE;
+}
+meta.document.textfield {
+  background-color: #0B1112;
+  border-color: #232B2C;
+}
+
+meta.text {
+  color: #CECECE;
+}
+meta.text.selected {
+  background-color: #293334;
+}
+
+meta.cursor {
+  background-color: #CD974B;
+}
+
+meta.indentguide {
+  border-color: #1E2628;
+}
+
+meta.gutter {
+  color: #4D585A;
+}
+meta.gutter.selected {
+  color: #CECECE;
+}
+
+/*
+ * Syntax styles
+ */
+
+/* Comments */
+comment {
+  color: #DFDF8E;
+}
+
+/* Strings */
+string,
+string-template,
+string-template.value,
+string.key,
+cdata,
+regex {
+  color: #95CB82;
+}
+string.escape,
+regex.escaped {
+  background-color: #ffffff10;
+}
+
+/* Constants — numbers, symbols, keywords, booleans */
+value,
+value.boolean,
+value.null,
+value.number,
+value.entity,
+value.symbols,
+identifier.constant {
+  color: #CC8BC9;
+}
+
+/* Global definitions (tags intentionally excluded, matching upstream) */
+definition,
+definition.type,
+definition.class,
+definition.protocol,
+definition.enum,
+definition.union,
+definition.struct,
+definition.package,
+definition.property,
+definition.function,
+definition.method,
+identifier.global {
+  color: #71ADE7;
+}
+
+/* Mistakes */
+invalid {
+  color: #cc3333;
+  background-color: #2B1D1E;
+}
+
+/*
+ * Terminal
+ */
+terminal.black {
+  color: #0E1415;
+}
+terminal.red {
+  color: #cc3333;
+}
+terminal.green {
+  color: #95CB82;
+}
+terminal.yellow {
+  color: #DFDF8E;
+}
+terminal.blue {
+  color: #71ADE7;
+}
+terminal.magenta {
+  color: #CC8BC9;
+}
+terminal.cyan {
+  color: #CD974B;
+}
+terminal.white {
+  color: #CECECE;
+}
+terminal.bright-black {
+  color: #708B8D;
+}
+terminal.bright-red {
+  color: #E05252;
+}
+terminal.bright-green {
+  color: #ADE099;
+}
+terminal.bright-yellow {
+  color: #EDEDAD;
+}
+terminal.bright-blue {
+  color: #8FC0F5;
+}
+terminal.bright-magenta {
+  color: #E0A9DD;
+}
+terminal.bright-cyan {
+  color: #E0AD6C;
+}
+terminal.bright-white {
+  color: #FFFFFF;
+}

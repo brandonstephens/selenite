@@ -1,0 +1,204 @@
+/*
+ * Alabaster Dark BG — NOT part of the upstream sublime-scheme-alabaster
+ * repository (it only ships a light BG variant). This extrapolates the
+ * BG approach — background tints instead of colored text — onto Alabaster
+ * Dark's palette, reusing Alabaster Dark's document colors, accent and
+ * mistake styling exactly, so it reads as a natural sibling of both
+ * Alabaster Dark and Alabaster BG.
+ */
+
+meta {
+  -theme-display-name: 'Alabaster Dark BG';
+  -theme-interface-style: dark;
+  -theme-vibrancy: none;
+  -theme-accent-color: #CD974B;
+}
+
+/*
+ * Window styles (same as Alabaster Dark)
+ */
+meta.window {
+  background-color: #0A0F10;
+  border-color: #232B2C;
+}
+meta.titlebar {
+  background-color: #0A0F10;
+  color: #CECECE;
+  border-color: #232B2C;
+}
+meta.titlebar.inactive {
+  background-color: #0A0F10;
+  color: #6E7B7C;
+}
+
+meta.button {
+  background-color: #1B2224;
+  border-color: #2B3335;
+  color: #CECECE;
+}
+meta.button.highlighted {
+  background-color: #2B3335;
+  border-color: #3A4345;
+  color: #CECECE;
+}
+meta.button.disabled {
+  background-color: #0A0F10;
+  border-color: #1B2224;
+  color: #5A6567;
+}
+
+meta.textfield,
+meta.textfield.active {
+  background-color: #0B1112;
+  border-color: #232B2C;
+}
+
+/*
+ * Document styles (same as Alabaster Dark)
+ */
+meta.document {
+  background-color: #0E1415;
+  border-color: #232B2C;
+}
+meta.document.button {
+  background-color: #1B2224;
+  border-color: #2B3335;
+  color: #CECECE;
+}
+meta.document.textfield {
+  background-color: #0B1112;
+  border-color: #232B2C;
+}
+
+meta.text {
+  color: #CECECE;
+}
+meta.text.selected {
+  background-color: #293334;
+}
+
+meta.cursor {
+  background-color: #CD974B;
+}
+
+meta.indentguide {
+  border-color: #1E2628;
+}
+
+meta.gutter {
+  color: #4D585A;
+}
+meta.gutter.selected {
+  color: #CECECE;
+}
+
+/*
+ * Syntax styles — same four classes as Alabaster Dark, styled with a
+ * tinted background instead of colored text. Tint hues match Alabaster
+ * Dark's foreground hues (yellow comments, green strings, blue
+ * definitions) at low alpha so body text stays legible on top.
+ */
+
+/* Comments */
+comment {
+  background-color: hsla(50, 70%, 55%, 0.16);
+}
+
+/* Strings */
+string,
+string-template,
+string-template.value,
+string.key,
+cdata,
+regex {
+  background-color: hsla(100, 45%, 50%, 0.14);
+}
+string.escape,
+regex.escaped {
+  background-color: hsla(100, 45%, 50%, 0.24);
+}
+
+/* Constants — numbers, symbols, keywords, booleans (kept as text color) */
+value,
+value.boolean,
+value.null,
+value.number,
+value.entity,
+value.symbols,
+identifier.constant {
+  color: #CC8BC9;
+}
+
+/* Global definitions */
+definition,
+definition.type,
+definition.class,
+definition.protocol,
+definition.enum,
+definition.union,
+definition.struct,
+definition.package,
+definition.property,
+definition.function,
+definition.method,
+identifier.global {
+  background-color: hsla(208, 70%, 55%, 0.16);
+}
+
+/* Mistakes */
+invalid {
+  color: #cc3333;
+  background-color: #2B1D1E;
+}
+
+/*
+ * Terminal (same as Alabaster Dark)
+ */
+terminal.black {
+  color: #0E1415;
+}
+terminal.red {
+  color: #cc3333;
+}
+terminal.green {
+  color: #95CB82;
+}
+terminal.yellow {
+  color: #DFDF8E;
+}
+terminal.blue {
+  color: #71ADE7;
+}
+terminal.magenta {
+  color: #CC8BC9;
+}
+terminal.cyan {
+  color: #CD974B;
+}
+terminal.white {
+  color: #CECECE;
+}
+terminal.bright-black {
+  color: #708B8D;
+}
+terminal.bright-red {
+  color: #E05252;
+}
+terminal.bright-green {
+  color: #ADE099;
+}
+terminal.bright-yellow {
+  color: #EDEDAD;
+}
+terminal.bright-blue {
+  color: #8FC0F5;
+}
+terminal.bright-magenta {
+  color: #E0A9DD;
+}
+terminal.bright-cyan {
+  color: #E0AD6C;
+}
+terminal.bright-white {
+  color: #FFFFFF;
+}
