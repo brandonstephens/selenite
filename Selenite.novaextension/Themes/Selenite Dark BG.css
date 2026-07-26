@@ -1,18 +1,21 @@
 /*
- * Alabaster Dark — ported from tonsky/sublime-scheme-alabaster
- * A dark version of Alabaster built on the same principles: minimal
- * highlighting, no styling of standard keywords.
+ * Selenite Dark BG — NOT part of the upstream sublime-scheme-alabaster
+ * repository (it only ships a light BG variant). This extrapolates the
+ * BG approach — background tints instead of colored text — onto Selenite
+ * Dark's palette, reusing Selenite Dark's document colors, accent and
+ * mistake styling exactly, so it reads as a natural sibling of both
+ * Selenite Dark and Selenite BG.
  */
 
 meta {
-  -theme-display-name: 'Alabaster Dark';
+  -theme-display-name: 'Selenite Dark BG';
   -theme-interface-style: dark;
   -theme-vibrancy: none;
   -theme-accent-color: #CD974B;
 }
 
 /*
- * Window styles
+ * Window styles (same as Selenite Dark)
  */
 meta.window {
   background-color: #0A0F10;
@@ -51,7 +54,7 @@ meta.textfield.active {
 }
 
 /*
- * Document styles
+ * Document styles (same as Selenite Dark)
  */
 meta.document {
   background-color: #0E1415;
@@ -75,7 +78,7 @@ meta.text.selected {
 }
 
 meta.cursor {
-  background-color: #CD974B;
+  background-color: #20425B;
 }
 
 meta.indentguide {
@@ -90,12 +93,16 @@ meta.gutter.selected {
 }
 
 /*
- * Syntax styles
+ * Syntax styles — same four classes as Selenite Dark, styled with a
+ * tinted background instead of colored text. Tint hues match Selenite
+ * Dark's foreground hues (yellow comments, green strings, blue
+ * definitions), bright enough to read clearly against the near-black
+ * document background while keeping body text legible on top.
  */
 
 /* Comments */
 comment {
-  color: #DFDF8E;
+  background-color: hsla(50, 75%, 58%, 0.32);
 }
 
 /* Strings */
@@ -105,14 +112,14 @@ string-template.value,
 string.key,
 cdata,
 regex {
-  color: #95CB82;
+  background-color: hsla(100, 50%, 52%, 0.30);
 }
 string.escape,
 regex.escaped {
-  background-color: #ffffff10;
+  background-color: hsla(100, 55%, 52%, 0.44);
 }
 
-/* Constants — numbers, symbols, keywords, booleans */
+/* Constants — numbers, symbols, keywords, booleans (kept as text color) */
 value,
 value.boolean,
 value.null,
@@ -123,7 +130,7 @@ identifier.constant {
   color: #CC8BC9;
 }
 
-/* Global definitions (tags intentionally excluded, matching upstream) */
+/* Global definitions */
 definition,
 definition.type,
 definition.class,
@@ -136,7 +143,7 @@ definition.property,
 definition.function,
 definition.method,
 identifier.global {
-  color: #71ADE7;
+  background-color: hsla(208, 75%, 60%, 0.32);
 }
 
 /* Mistakes */
@@ -146,7 +153,7 @@ invalid {
 }
 
 /*
- * Terminal
+ * Terminal (same as Selenite Dark)
  */
 terminal.black {
   color: #0E1415;

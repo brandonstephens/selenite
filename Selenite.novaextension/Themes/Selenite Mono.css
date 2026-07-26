@@ -1,36 +1,36 @@
 /*
- * Alabaster BG — ported from tonsky/sublime-scheme-alabaster
- * Uses background color for highlighting instead of text color, so all
- * text stays black and is easier to read; the tinted background creates
- * a separate layer you can choose to ignore.
+ * Selenite Mono — ported from tonsky/sublime-scheme-alabaster
+ * Monochromatic variant: only the cursor and occasional errors/search
+ * results are colored. Everything else is black text with subtle grey
+ * background tints to mark strings/constants/definitions.
  */
 
 meta {
-  -theme-display-name: 'Alabaster BG';
+  -theme-display-name: 'Selenite Mono';
   -theme-interface-style: light;
   -theme-vibrancy: none;
-  -theme-accent-color: #007ACC;
+  -theme-accent-color: #16BDEC;
 }
 
 /*
  * Window styles
  */
 meta.window {
-  background-color: #F2F2F2;
-  border-color: #DADADA;
+  background-color: #F0F0F0;
+  border-color: #D8D8D8;
 }
 meta.titlebar {
-  background-color: #F2F2F2;
+  background-color: #F0F0F0;
   color: #000000;
-  border-color: #DADADA;
+  border-color: #D8D8D8;
 }
 meta.titlebar.inactive {
-  background-color: #F2F2F2;
+  background-color: #F0F0F0;
   color: #8A8A8A;
 }
 
 meta.button {
-  background-color: #E8E8E8;
+  background-color: #E6E6E6;
   border-color: #D2D2D2;
   color: #000000;
 }
@@ -40,15 +40,15 @@ meta.button.highlighted {
   color: #000000;
 }
 meta.button.disabled {
-  background-color: #F7F7F7;
-  border-color: #E4E4E4;
-  color: #A5A5A5;
+  background-color: #F5F5F5;
+  border-color: #E2E2E2;
+  color: #A6A6A6;
 }
 
 meta.textfield,
 meta.textfield.active {
   background-color: #FFFFFF;
-  border-color: #DADADA;
+  border-color: #D8D8D8;
 }
 
 /*
@@ -56,27 +56,27 @@ meta.textfield.active {
  */
 meta.document {
   background-color: #FFFFFF;
-  border-color: #DADADA;
+  border-color: #D8D8D8;
 }
 meta.document.button {
-  background-color: #E8E8E8;
+  background-color: #E6E6E6;
   border-color: #D2D2D2;
   color: #000000;
 }
 meta.document.textfield {
   background-color: #FFFFFF;
-  border-color: #DADADA;
+  border-color: #D8D8D8;
 }
 
 meta.text {
   color: #000000;
 }
 meta.text.selected {
-  background-color: #B4D8FD;
+  background-color: #B3D7FF;
 }
 
 meta.cursor {
-  background-color: #007ACC;
+  background-color: #E3F2FD;
 }
 
 meta.indentguide {
@@ -84,20 +84,19 @@ meta.indentguide {
 }
 
 meta.gutter {
-  color: #ADADAD;
+  color: #A0A0A0;
 }
 meta.gutter.selected {
   color: #000000;
 }
 
 /*
- * Syntax styles — same four classes as Alabaster, styled with a tinted
- * background instead of colored text
+ * Syntax styles
  */
 
 /* Comments */
 comment {
-  background-color: #FFFABC;
+  color: #999999;
 }
 
 /* Strings */
@@ -107,14 +106,14 @@ string-template.value,
 string.key,
 cdata,
 regex {
-  background-color: #F1FADF;
+  background-color: #EEEEEE;
 }
 string.escape,
 regex.escaped {
-  background-color: #DBECB6;
+  background-color: #D9D9D9;
 }
 
-/* Constants — numbers, symbols, keywords, booleans (kept as text color) */
+/* Constants — numbers, symbols, keywords, booleans */
 value,
 value.boolean,
 value.null,
@@ -122,7 +121,7 @@ value.number,
 value.entity,
 value.symbols,
 identifier.constant {
-  color: #7A3E9D;
+  background-color: #EEEEEE;
 }
 
 /* Global definitions */
@@ -138,63 +137,63 @@ definition.property,
 definition.function,
 definition.method,
 identifier.global {
-  background-color: #DBF1FF;
+  background-color: #EEEEEE;
 }
 
 /* Mistakes */
 invalid {
   color: #cc3333;
-  background-color: #FFE0E0;
+  background-color: #FFE4E4;
 }
 
 /*
- * Terminal
+ * Terminal — kept mostly monochrome, with the cursor cyan doubling as blue
  */
 terminal.black {
   color: #000000;
 }
 terminal.red {
-  color: #AA3731;
+  color: #cc3333;
 }
 terminal.green {
-  color: #448C27;
+  color: #666666;
 }
 terminal.yellow {
-  color: #FFBC5D;
+  color: #999999;
 }
 terminal.blue {
-  color: #007ACC;
+  color: #16BDEC;
 }
 terminal.magenta {
-  color: #7A3E9D;
+  color: #666666;
 }
 terminal.cyan {
-  color: #007ACC;
+  color: #16BDEC;
 }
 terminal.white {
-  color: #777777;
+  color: #999999;
 }
 terminal.bright-black {
   color: #444444;
 }
 terminal.bright-red {
-  color: #C24B44;
+  color: #E05252;
 }
 terminal.bright-green {
-  color: #5AA836;
+  color: #808080;
 }
 terminal.bright-yellow {
-  color: #FFCB7A;
+  color: #B3B3B3;
 }
 terminal.bright-blue {
-  color: #4FA6E8;
+  color: #5DD1F5;
 }
 terminal.bright-magenta {
-  color: #9757BC;
+  color: #808080;
 }
 terminal.bright-cyan {
-  color: #4FA6E8;
+  color: #5DD1F5;
 }
 terminal.bright-white {
-  color: #999999;
+  color: #CCCCCC;
 }

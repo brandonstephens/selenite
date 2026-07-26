@@ -1,21 +1,18 @@
 /*
- * Alabaster Dark BG — NOT part of the upstream sublime-scheme-alabaster
- * repository (it only ships a light BG variant). This extrapolates the
- * BG approach — background tints instead of colored text — onto Alabaster
- * Dark's palette, reusing Alabaster Dark's document colors, accent and
- * mistake styling exactly, so it reads as a natural sibling of both
- * Alabaster Dark and Alabaster BG.
+ * Selenite Dark — ported from tonsky/sublime-scheme-alabaster
+ * A dark version of Selenite built on the same principles: minimal
+ * highlighting, no styling of standard keywords.
  */
 
 meta {
-  -theme-display-name: 'Alabaster Dark BG';
+  -theme-display-name: 'Selenite Dark';
   -theme-interface-style: dark;
   -theme-vibrancy: none;
   -theme-accent-color: #CD974B;
 }
 
 /*
- * Window styles (same as Alabaster Dark)
+ * Window styles
  */
 meta.window {
   background-color: #0A0F10;
@@ -54,7 +51,7 @@ meta.textfield.active {
 }
 
 /*
- * Document styles (same as Alabaster Dark)
+ * Document styles
  */
 meta.document {
   background-color: #0E1415;
@@ -78,7 +75,7 @@ meta.text.selected {
 }
 
 meta.cursor {
-  background-color: #CD974B;
+  background-color: #20425B;
 }
 
 meta.indentguide {
@@ -93,15 +90,12 @@ meta.gutter.selected {
 }
 
 /*
- * Syntax styles — same four classes as Alabaster Dark, styled with a
- * tinted background instead of colored text. Tint hues match Alabaster
- * Dark's foreground hues (yellow comments, green strings, blue
- * definitions) at low alpha so body text stays legible on top.
+ * Syntax styles
  */
 
 /* Comments */
 comment {
-  background-color: hsla(50, 70%, 55%, 0.16);
+  color: #DFDF8E;
 }
 
 /* Strings */
@@ -111,14 +105,14 @@ string-template.value,
 string.key,
 cdata,
 regex {
-  background-color: hsla(100, 45%, 50%, 0.14);
+  color: #95CB82;
 }
 string.escape,
 regex.escaped {
-  background-color: hsla(100, 45%, 50%, 0.24);
+  background-color: #ffffff22;
 }
 
-/* Constants — numbers, symbols, keywords, booleans (kept as text color) */
+/* Constants — numbers, symbols, keywords, booleans */
 value,
 value.boolean,
 value.null,
@@ -129,7 +123,7 @@ identifier.constant {
   color: #CC8BC9;
 }
 
-/* Global definitions */
+/* Global definitions (tags intentionally excluded, matching upstream) */
 definition,
 definition.type,
 definition.class,
@@ -142,7 +136,7 @@ definition.property,
 definition.function,
 definition.method,
 identifier.global {
-  background-color: hsla(208, 70%, 55%, 0.16);
+  color: #71ADE7;
 }
 
 /* Mistakes */
@@ -152,7 +146,7 @@ invalid {
 }
 
 /*
- * Terminal (same as Alabaster Dark)
+ * Terminal
  */
 terminal.black {
   color: #0E1415;

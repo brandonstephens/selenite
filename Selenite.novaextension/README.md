@@ -1,10 +1,10 @@
-# Alabaster for Nova
+# Selenite for Nova
 
-A color theme extension for [Nova](https://nova.app) ported from Nikita
-Prokopov's [Alabaster](https://github.com/tonsky/sublime-scheme-alabaster)
+**Selenite** is a color theme extension for [Nova](https://nova.app) ported
+from Nikita Prokopov's [Alabaster](https://github.com/tonsky/sublime-scheme-alabaster)
 color scheme for Sublime Text.
 
-Alabaster uses a minimal amount of highlighting. It only colors four things:
+Selenite uses a minimal amount of highlighting. It only colors four things:
 
 1. Strings
 2. Constants (numbers, symbols, keywords, booleans)
@@ -20,14 +20,14 @@ Six variants, covering light/dark for each of the three upstream styles:
 
 | Style  | Light               | Dark                     |
 |--------|---------------------|---------------------------|
-| Normal | Alabaster           | Alabaster Dark            |
-| BG     | Alabaster BG         | Alabaster Dark BG *       |
-| Mono   | Alabaster Mono       | Alabaster Dark Mono       |
+| Normal | Selenite            | Selenite Dark             |
+| BG     | Selenite BG          | Selenite Dark BG *        |
+| Mono   | Selenite Mono        | Selenite Dark Mono        |
 
-`*` **Alabaster Dark BG does not exist upstream** — the original repo only
+`*` **Selenite Dark BG does not exist upstream** — the original repo only
 ships a light BG variant. This port constructs a dark counterpart by
 applying the same idea (tinted backgrounds instead of colored text) to
-Alabaster Dark's palette, so it's an original addition rather than a direct
+Selenite Dark's palette, so it's an original addition rather than a direct
 port. Everything else is a faithful translation of the upstream
 `.sublime-color-scheme` files.
 
@@ -58,7 +58,7 @@ exactly the same hooks, so a few upstream details couldn't be carried over
 
 The core experience — document background/foreground, cursor, gutter,
 selection, indent guides, and all syntax highlighting for the four
-Alabaster classes — is fully ported.
+Selenite classes — is fully ported.
 
 Window chrome (titlebar/sidebar/buttons) has no upstream reference at all
 (Sublime themes don't touch app chrome), so those colors were designed to

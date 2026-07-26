@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selenite — Theme Demo</title>
+<style>
+  :root {
+    --font-display: ui-serif, Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Fira Code", Menlo, Consolas, monospace;
+
+    --page-bg: #F6F5F3;
+    --page-surface: #FFFFFF;
+    --page-border: #E4E1DA;
+    --page-text: #211F1C;
+    --page-text-dim: #6E6A62;
+    --page-accent: #5B5A8C;
+    --page-accent-soft: #ECEBF4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page-bg: #131214;
+      --page-surface: #1A191B;
+      --page-border: #2B292C;
+      --page-text: #EDEBE6;
+      --page-text-dim: #9C978F;
+      --page-accent: #ACA9DE;
+      --page-accent-soft: #232230;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--page-bg);
+    color: var(--page-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 64px 24px 96px; }
+
+  header.intro { max-width: 640px; margin-bottom: 40px; }
+  .eyebrow {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: 12px;
+    color: var(--page-accent);
+    margin: 0 0 12px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-size: 42px;
+    line-height: 1.1;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .lede { font-size: 17px; line-height: 1.6; color: var(--page-text-dim); margin: 0; }
+  .lede code { color: var(--page-text); }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  h3 {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    margin: 28px 0 12px;
+  }
+  p { line-height: 1.6; font-size: 15px; color: var(--page-text-dim); }
+  p code, li code {
+    font-family: var(--font-mono);
+    font-size: .85em;
+    color: var(--page-text);
+    background: var(--page-accent-soft);
+    padding: .1em .35em;
+    border-radius: 4px;
+  }
+
+  section { margin-bottom: 40px; }
+
+  /* Theme switcher */
+  .switcher {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-bottom: 16px;
+    padding: 16px 18px;
+    background: var(--page-surface);
+    border: 1px solid var(--page-border);
+    border-radius: 12px;
+  }
+  .switcher-group { display: flex; flex-direction: column; gap: 8px; }
+  .switcher-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--page-text-dim);
+  }
+  .switcher-buttons { display: flex; gap: 6px; }
+  .theme-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 11px;
+    border-radius: 7px;
+    border: 1px solid var(--page-border);
+    background: var(--page-bg);
+    color: var(--page-text);
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease;
+  }
+  .theme-btn:hover { border-color: var(--page-accent); }
+  .theme-btn[aria-pressed="true"] {
+    border-color: var(--page-accent);
+    background: var(--page-accent-soft);
+    font-weight: 600;
+  }
+  .theme-btn .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .switcher-note { font-size: 12.5px; color: var(--page-text-dim); margin: 4px 0 0; }
+
+  /* Editor mockup */
+  .editor-wrap { margin-bottom: 8px; }
+  .editor {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--win-border);
+    background: var(--win-bg);
+    box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 10px 28px rgba(0,0,0,.10);
+    transition: background-color .15s ease, border-color .15s ease;
+  }
+  .editor-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--win-bg);
+    border-bottom: 1px solid var(--win-border);
+    transition: background-color .15s ease, border-color .15s ease;
+  }
+  .dots { display: flex; gap: 6px; }
+  .dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--titlebar-text); opacity: .3; display: block; }
+  .editor-tabs { display: flex; gap: 2px; }
+  .tab {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 6px 6px 0 0;
+    background: transparent;
+    border: none;
+    color: var(--titlebar-text);
+    opacity: .55;
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+  }
+  .tab.active { background: var(--doc-bg); opacity: 1; }
+  .editor-body { background: var(--doc-bg); color: var(--text); overflow-x: auto; transition: background-color .15s ease, color .15s ease; }
+  .code-lines { font-family: var(--font-mono); font-size: 13px; line-height: 1.65; padding: 12px 0; min-width: max-content; }
+  .line { padding: 0 16px; white-space: pre; }
+  .line.current { background: var(--cursor-bg); }
+  .lineno { display: inline-block; width: 2.2em; text-align: right; margin-right: 1.2em; color: var(--gutter); user-select: none; }
+  .line.current .lineno { color: var(--gutter-selected); }
+
+  .tok-comment  { color: var(--comment-color, inherit);  background-color: var(--comment-bg, transparent); }
+  .tok-string   { color: var(--string-color, inherit);   background-color: var(--string-bg, transparent); }
+  .tok-escape   { color: var(--escape-color, inherit);   background-color: var(--escape-bg, transparent); }
+  .tok-const    { color: var(--const-color, inherit);    background-color: var(--const-bg, transparent); }
+  .tok-def      { color: var(--def-color, inherit);      background-color: var(--def-bg, transparent); }
+  .tok-op       { color: var(--op-color, inherit);       background-color: var(--op-bg, transparent); }
+  .tok-invalid  { color: var(--invalid-color, inherit);  background-color: var(--invalid-bg, transparent); }
+  .tok-comment, .tok-string, .tok-const, .tok-def, .tok-op, .tok-invalid, .tok-escape { border-radius: 2px; }
+  .tok-selected { background-color: var(--selection-bg, transparent); border-radius: 2px; }
+
+  /* Theme variable blocks — transcribed 1:1 from the .novaextension theme CSS */
+  .editor[data-theme="selenite"] {
+    --win-bg:#ECECEC; --win-border:#D6D6D6; --titlebar-text:#000000;
+    --doc-bg:#F7F7F7; --text:#000000;
+    --selection-bg:#BFDBFE; --cursor-bg:#E3F2FD;
+    --gutter:#B0B0B0; --gutter-selected:#000000; --indentguide:#E3E3E3;
+    --comment-color:#AA3731;
+    --string-color:#448C27;
+    --escape-color:#777777;
+    --const-color:#7A3E9D;
+    --def-color:#325CC0;
+    --op-color:#777777;
+    --invalid-color:#AA3731; --invalid-bg:rgba(170,55,49,.2);
+  }
+  .editor[data-theme="selenite-dark"] {
+    --win-bg:#0A0F10; --win-border:#232B2C; --titlebar-text:#CECECE;
+    --doc-bg:#0E1415; --text:#CECECE;
+    --selection-bg:#293334; --cursor-bg:#20425B;
+    --gutter:#4D585A; --gutter-selected:#CECECE; --indentguide:#1E2628;
+    --comment-color:#DFDF8E;
+    --string-color:#95CB82;
+    --escape-bg:#ffffff22;
+    --const-color:#CC8BC9;
+    --def-color:#71ADE7;
+    --invalid-color:#cc3333; --invalid-bg:#2B1D1E;
+  }
+  .editor[data-theme="selenite-bg"] {
+    --win-bg:#F2F2F2; --win-border:#DADADA; --titlebar-text:#000000;
+    --doc-bg:#FFFFFF; --text:#000000;
+    --selection-bg:#B4D8FD; --cursor-bg:#E3F2FD;
+    --gutter:#ADADAD; --gutter-selected:#000000; --indentguide:#E6E6E6;
+    --comment-bg:#FFFABC;
+    --string-bg:#F1FADF;
+    --escape-bg:#DBECB6;
+    --const-color:#7A3E9D;
+    --def-bg:#DBF1FF;
+    --invalid-color:#cc3333; --invalid-bg:#FFE0E0;
+  }
+  .editor[data-theme="selenite-dark-bg"] {
+    --win-bg:#0A0F10; --win-border:#232B2C; --titlebar-text:#CECECE;
+    --doc-bg:#0E1415; --text:#CECECE;
+    --selection-bg:#293334; --cursor-bg:#20425B;
+    --gutter:#4D585A; --gutter-selected:#CECECE; --indentguide:#1E2628;
+    --comment-bg:hsla(50,75%,58%,.32);
+    --string-bg:hsla(100,50%,52%,.30);
+    --escape-bg:hsla(100,55%,52%,.44);
+    --const-color:#CC8BC9;
+    --def-bg:hsla(208,75%,60%,.32);
+    --invalid-color:#cc3333; --invalid-bg:#2B1D1E;
+  }
+  .editor[data-theme="selenite-mono"] {
+    --win-bg:#F0F0F0; --win-border:#D8D8D8; --titlebar-text:#000000;
+    --doc-bg:#FFFFFF; --text:#000000;
+    --selection-bg:#B3D7FF; --cursor-bg:#E3F2FD;
+    --gutter:#A0A0A0; --gutter-selected:#000000; --indentguide:#E6E6E6;
+    --comment-color:#999999;
+    --string-bg:#EEEEEE;
+    --escape-bg:#D9D9D9;
+    --const-bg:#EEEEEE;
+    --def-bg:#EEEEEE;
+    --invalid-color:#cc3333; --invalid-bg:#FFE4E4;
+  }
+  .editor[data-theme="selenite-dark-mono"] {
+    --win-bg:#0B0B0B; --win-border:#292929; --titlebar-text:#999999;
+    --doc-bg:#111111; --text:#999999;
+    --selection-bg:#2F2F2F; --cursor-bg:#20425B;
+    --gutter:#4A4A4A; --gutter-selected:#EEEEEE; --indentguide:#232323;
+    --comment-bg:#404040;
+    --string-color:#EEEEEE;
+    --escape-bg:#ffffff34;
+    --const-color:#EEEEEE;
+    --def-color:#EEEEEE; --def-bg:#404040;
+    --op-color:#EEEEEE;
+    --invalid-color:#cc3333; --invalid-bg:#2B1D1E;
+  }
+
+  /* Legend chips */
+  .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 8px; }
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--page-surface);
+    border: 1px solid var(--page-border);
+  }
+  .chip-none { border-style: dashed; opacity: .6; }
+  .chip-sample {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 13px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--page-accent-soft);
+  }
+  .chip-swatch { width: 18px; height: 18px; border-radius: 5px; border: 1px solid var(--page-border); flex: none; }
+  .chip-meta { display: flex; flex-direction: column; gap: 1px; }
+  .chip-name { font-size: 12.5px; font-weight: 600; }
+  .chip-detail { font-family: var(--font-mono); font-size: 11px; color: var(--page-text-dim); }
+
+  /* Rules tables */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--page-border); border-radius: 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--page-surface); }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--page-border); vertical-align: top; white-space: nowrap; }
+  td.wrap { white-space: normal; }
+  tr:last-child td { border-bottom: none; }
+  th {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: .06em;
+    color: var(--page-text-dim);
+    font-weight: 600;
+  }
+  td.mono, th.mono { font-family: var(--font-mono); font-size: 12px; }
+  td.dim { color: var(--page-text-dim); }
+
+  .footnote { font-size: 13px; margin-top: 16px; }
+  footer { font-size: 12.5px; color: var(--page-text-dim); border-top: 1px solid var(--page-border); padding-top: 20px; }
+  footer a { color: var(--page-accent); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="intro">
+    <p class="eyebrow">Nova editor theme</p>
+    <h1>Selenite</h1>
+    <p class="lede">
+      Selenite colors four things — strings, constants, comments, and the names you
+      declare — and leaves everything else, including keywords like <code>class</code>,
+      <code>if</code>, <code>async</code>, and <code>new</code>, in the default text
+      color. Six variants apply that same idea differently: some use text color, some
+      use a background tint, and the Mono pair drops color almost entirely.
+    </p>
+  </header>
+
+  <section class="switcher" aria-label="Theme picker">
+    <div class="switcher-group">
+      <span class="switcher-label">Normal</span>
+      <div class="switcher-buttons">
+        <button class="theme-btn" data-theme-btn="selenite" aria-pressed="true"><span class="dot" style="background:#007ACC"></span>Selenite</button>
+        <button class="theme-btn" data-theme-btn="selenite-dark" aria-pressed="false"><span class="dot" style="background:#CD974B"></span>Dark</button>
+      </div>
+    </div>
+    <div class="switcher-group">
+      <span class="switcher-label">BG</span>
+      <div class="switcher-buttons">
+        <button class="theme-btn" data-theme-btn="selenite-bg" aria-pressed="false"><span class="dot" style="background:#007ACC"></span>Selenite BG</button>
+        <button class="theme-btn" data-theme-btn="selenite-dark-bg" aria-pressed="false"><span class="dot" style="background:#CD974B"></span>Dark BG*</button>
+      </div>
+    </div>
+    <div class="switcher-group">
+      <span class="switcher-label">Mono</span>
+      <div class="switcher-buttons">
+        <button class="theme-btn" data-theme-btn="selenite-mono" aria-pressed="false"><span class="dot" style="background:#16BDEC"></span>Selenite Mono</button>
+        <button class="theme-btn" data-theme-btn="selenite-dark-mono" aria-pressed="false"><span class="dot" style="background:#CD974B"></span>Dark Mono</button>
+      </div>
+    </div>
+  </section>
+  <p class="switcher-note">* Dark BG isn't part of the original Alabaster scheme upstream — see the footnote below.</p>
+
+  <section class="editor-wrap">
+    <div class="editor" id="editor" data-theme="selenite">
+      <div class="editor-titlebar">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="editor-tabs">
+          <button class="tab active" data-tab="js">service.js</button>
+          <button class="tab" data-tab="json">config.json</button>
+        </div>
+        <div style="width:52px"></div>
+      </div>
+      <div class="editor-body">
+        <div class="code-lines" data-pane="js">
+          <div class="line"><span class="lineno">1</span><span class="tok-comment">// Fetch a user profile and cache the result</span></div>
+          <div class="line"><span class="lineno">2</span>class <span class="tok-def">UserService</span> extends BaseService <span class="tok-op">{</span></div>
+          <div class="line"><span class="lineno">3</span>  static <span class="tok-def">DEFAULT_TIMEOUT</span> <span class="tok-op">=</span> <span class="tok-const">3000</span><span class="tok-op">;</span></div>
+          <div class="line"><span class="lineno">4</span></div>
+          <div class="line"><span class="lineno">5</span>  <span class="tok-def">constructor</span><span class="tok-op">(</span>apiClient<span class="tok-op">)</span> <span class="tok-op">{</span></div>
+          <div class="line"><span class="lineno">6</span>    super<span class="tok-op">()</span><span class="tok-op">;</span></div>
+          <div class="line"><span class="lineno">7</span>    this<span class="tok-op">.</span>apiClient <span class="tok-op">=</span> <span class="tok-selected">apiClient</span><span class="tok-op">;</span></div>
+          <div class="line"><span class="lineno">8</span>    this<span class="tok-op">.</span>cache <span class="tok-op">=</span> new Map<span class="tok-op">()</span><span class="tok-op">;</span></div>
+          <div class="line"><span class="lineno">9</span>  <span class="tok-op">}</span></div>
+          <div class="line"><span class="lineno">10</span></div>
+          <div class="line"><span class="lineno">11</span>  async <span class="tok-def">fetchProfile</span><span class="tok-op">(</span>userId<span class="tok-op">)</span> <span class="tok-op">{</span></div>
+          <div class="line"><span class="lineno">12</span>    if <span class="tok-op">(</span>this<span class="tok-op">.</span>cache<span class="tok-op">.</span>has<span class="tok-op">(</span>userId<span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">{</span></div>
+          <div class="line"><span class="lineno">13</span>      return this<span class="tok-op">.</span>cache<span class="tok-op">.</span>get<span class="tok-op">(</span>userId<span class="tok-op">)</span><span class="tok-op">;</span></div>
+          <div class="line"><span class="lineno">14</span>    <span class="tok-op">}</span></div>
+          <div class="line"><span class="lineno">15</span></div>
+          <div class="line"><span class="lineno">16</span>    <span class="tok-comment">// TODO: <span class="tok-invalid">retrys</span> should be configurable</span></div>
+          <div class="line current"><span class="lineno">17</span>    const response <span class="tok-op">=</span> await this<span class="tok-op">.</span>apiClient<span class="tok-op">.</span>get<span class="tok-op">(</span><span class="tok-string">`/users/<span class="tok-op">${</span><span class="tok-string">userId</span><span class="tok-op">}</span>`</span><span class="tok-op">)</span><span class="tok-op">;</span></div>
+          <div class="line"><span class="lineno">18</span>    const isValid <span class="tok-op">=</span> response<span class="tok-op">.</span>status <span class="tok-op">===</span> <span class="tok-const">200</span> <span class="tok-op">&amp;&amp;</span> response<span class="tok-op">.</span>body <span class="tok-op">!==</span> <span class="tok-const">null</span><span class="tok-op">;</span></div>
+          <div class="line"><span class="lineno">19</span></div>
+          <div class="line"><span class="lineno">20</span>    if <span class="tok-op">(</span><span class="tok-op">!</span>isValid<span class="tok-op">)</span> <span class="tok-op">{</span></div>
+          <div class="line"><span class="lineno">21</span>      throw new Error<span class="tok-op">(</span><span class="tok-string">"Failed to load profile<span class="tok-escape">\n</span>"</span><span class="tok-op">)</span><span class="tok-op">;</span></div>
+          <div class="line"><span class="lineno">22</span>    <span class="tok-op">}</span></div>
+          <div class="line"><span class="lineno">23</span></div>
+          <div class="line"><span class="lineno">24</span>    return <span class="tok-op">{</span></div>
+          <div class="line"><span class="lineno">25</span>      <span class="tok-def">id</span><span class="tok-op">:</span> userId<span class="tok-op">,</span></div>
+          <div class="line"><span class="lineno">26</span>      <span class="tok-def">name</span><span class="tok-op">:</span> response<span class="tok-op">.</span>body<span class="tok-op">.</span>name<span class="tok-op">,</span></div>
+          <div class="line"><span class="lineno">27</span>      <span class="tok-def">verified</span><span class="tok-op">:</span> <span class="tok-const">true</span><span class="tok-op">,</span></div>
+          <div class="line"><span class="lineno">28</span>      <span class="tok-def">lastSeen</span><span class="tok-op">:</span> <span class="tok-const">null</span><span class="tok-op">,</span></div>
+          <div class="line"><span class="lineno">29</span>      <span class="tok-def">tags</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-string">/^admin-/</span><span class="tok-op">,</span> <span class="tok-string">/^beta-/</span><span class="tok-op">]</span><span class="tok-op">,</span></div>
+          <div class="line"><span class="lineno">30</span>    <span class="tok-op">}</span><span class="tok-op">;</span></div>
+          <div class="line"><span class="lineno">31</span>  <span class="tok-op">}</span></div>
+          <div class="line"><span class="lineno">32</span><span class="tok-op">}</span></div>
+          <div class="line"><span class="lineno">33</span></div>
+          <div class="line"><span class="lineno">34</span>const <span class="tok-def">MAX_RETRIES</span> <span class="tok-op">=</span> <span class="tok-const">5</span><span class="tok-op">;</span></div>
+        </div>
+        <div class="code-lines" data-pane="json" hidden>
+          <div class="line"><span class="lineno">1</span><span class="tok-op">{</span></div>
+          <div class="line"><span class="lineno">2</span>  <span class="tok-string">"endpoint"</span><span class="tok-op">:</span> <span class="tok-string">"https://api.example.com/v1"</span><span class="tok-op">,</span></div>
+          <div class="line"><span class="lineno">3</span>  <span class="tok-string">"retries"</span><span class="tok-op">:</span> <span class="tok-const">3</span><span class="tok-op">,</span></div>
+          <div class="line"><span class="lineno">4</span>  <span class="tok-string">"timeout"</span><span class="tok-op">:</span> <span class="tok-const">3000</span><span class="tok-op">,</span></div>
+          <div class="line"><span class="lineno">5</span>  <span class="tok-string">"verbose"</span><span class="tok-op">:</span> <span class="tok-const">false</span></div>
+          <div class="line"><span class="lineno">6</span><span class="tok-op">}</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="legend">
+    <h2>What's colored right now</h2>
+    <p>These swatches read the live CSS custom properties driving the sample above — pick a theme and they update in sync.</p>
+    <div class="chip-row" id="chips-syntax"></div>
+    <h3>Editor chrome</h3>
+    <div class="chip-row" id="chips-chrome"></div>
+  </section>
+
+  <section class="rules">
+    <h2>Highlighting rules</h2>
+    <p>
+      Selenite ports Nikita Prokopov's <em>Alabaster</em> scheme for Sublime Text.
+      Rather than color every token, it colors four categories and lets everything
+      else — keywords, parameter names, variable names, plain member access —
+      sit in the default text color. In the sample above, notice that
+      <code>class</code>, <code>if</code>, <code>async</code>, <code>await</code>,
+      <code>new</code>, and <code>static</code>, along with locals like
+      <code>response</code> and <code>userId</code>, are the same color as the
+      surrounding text. Only literals, comments, and the names being declared stand out.
+    </p>
+    <p>
+      Two details worth knowing: the <code>${…}</code> interpolation inside a
+      template literal is treated as part of the string, not as a constant — and
+      an object or JSON key is colored identically to a string value, so key and
+      value read as one continuous run of color rather than two different ones.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Nova selectors</th><th>Covers</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Comments</td><td class="mono">comment</td><td class="wrap dim">Line and block comments</td></tr>
+          <tr><td>Strings</td><td class="mono">string, string-template(.value), string.key, cdata, regex</td><td class="wrap dim">Quoted strings, template literals (including the interpolated part), JSON/object keys, CDATA, regular expressions</td></tr>
+          <tr><td>Escapes</td><td class="mono">string.escape, regex.escaped</td><td class="wrap dim">Escape sequences inside a string or regex, e.g. <code>\n</code>, <code>\t</code></td></tr>
+          <tr><td>Constants</td><td class="mono">value(.boolean/.null/.number/.entity/.symbols), identifier.constant</td><td class="wrap dim">Numbers, booleans, null/nil, symbols, named constants</td></tr>
+          <tr><td>Definitions</td><td class="mono">definition(.type/.class/.protocol/.enum/.union/.struct/.package/.property/.function/.method), identifier.global</td><td class="wrap dim">The name at the point something is declared — a class, function, method, property, type, or module-level constant. Not references to it elsewhere.</td></tr>
+          <tr><td>Brackets &amp; operators</td><td class="mono">bracket, operator, keyword.operator</td><td class="wrap dim">Punctuation and operators — dimmed only in the variants that choose to (see below)</td></tr>
+          <tr><td>Mistakes</td><td class="mono">invalid</td><td class="wrap dim">Spelling and lint mistakes Nova flags inline</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>How each variant applies it</h3>
+    <p>
+      The four categories are the same across all six variants — what changes is
+      whether a category is expressed as text color, a background tint, both, or
+      left unstyled.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Variant</th><th>Comments</th><th>Strings</th><th>Escapes</th><th>Constants</th><th>Definitions</th><th>Brackets/ops</th><th>Mistakes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Selenite</td><td>text</td><td>text</td><td>text</td><td>text</td><td>text</td><td>text</td><td>text+bg</td></tr>
+          <tr><td>Selenite Dark</td><td>text</td><td>text</td><td>bg</td><td>text</td><td>text</td><td class="dim">—</td><td>text+bg</td></tr>
+          <tr><td>Selenite BG</td><td>bg</td><td>bg</td><td>bg</td><td>text</td><td>bg</td><td class="dim">—</td><td>text+bg</td></tr>
+          <tr><td>Selenite Dark BG</td><td>bg</td><td>bg</td><td>bg</td><td>text</td><td>bg</td><td class="dim">—</td><td>text+bg</td></tr>
+          <tr><td>Selenite Mono</td><td>text</td><td>bg</td><td>bg</td><td>bg</td><td>bg</td><td class="dim">—</td><td>text+bg</td></tr>
+          <tr><td>Selenite Dark Mono</td><td>bg</td><td>text</td><td>bg</td><td>text</td><td>text+bg</td><td>text</td><td>text+bg</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">
+      Only Selenite and Selenite Dark Mono dim brackets/operators at all — the
+      other four variants leave punctuation in the default text color. In
+      Selenite Mono specifically, strings, constants, and definitions all resolve
+      to the same grey background tint, so those three categories are
+      distinguished only by shape and position, not color.
+    </p>
+  </section>
+
+  <footer>
+    A few upstream Alabaster details — nesting-depth bracket dimming, generic
+    punctuation dimming, current-line/search-match/bracket-match highlighting,
+    misspelling color, and diff markup (<code>markup.inserted</code> etc.) — have
+    no matching hook in Nova's theme API and were dropped rather than
+    approximated. Selenite Dark BG also isn't part of the original Alabaster
+    scheme; it's this port's own extrapolation of the BG idea onto the Dark
+    palette. Full details in the extension's README.
+  </footer>
+
+</div>
+
+<script>
+  const EDITOR = document.getElementById('editor');
+
+  const CATS = [
+    { key: 'comment', label: 'Comments' },
+    { key: 'string', label: 'Strings' },
+    { key: 'escape', label: 'Escapes' },
+    { key: 'const', label: 'Constants' },
+    { key: 'def', label: 'Definitions' },
+    { key: 'op', label: 'Brackets & operators' },
+    { key: 'invalid', label: 'Mistakes' },
+  ];
+
+  const CHROME = [
+    { key: 'win-bg', label: 'Window' },
+    { key: 'doc-bg', label: 'Document' },
+    { key: 'gutter', label: 'Gutter' },
+    { key: 'selection-bg', label: 'Selection' },
+    { key: 'cursor-bg', label: 'Current line' },
+    { key: 'indentguide', label: 'Indent guide' },
+  ];
+
+  function readVar(name) {
+    return getComputedStyle(EDITOR).getPropertyValue(name).trim();
+  }
+
+  function renderChips() {
+    const synWrap = document.getElementById('chips-syntax');
+    synWrap.innerHTML = '';
+    CATS.forEach(cat => {
+      const color = readVar(`--${cat.key}-color`);
+      const bg = readVar(`--${cat.key}-bg`);
+      const styled = Boolean(color || bg);
+
+      const chip = document.createElement('div');
+      chip.className = 'chip' + (styled ? '' : ' chip-none');
+
+      const sample = document.createElement('span');
+      sample.className = 'chip-sample';
+      sample.textContent = 'Aa';
+      if (color) sample.style.color = color;
+      if (bg) sample.style.backgroundColor = bg;
+
+      const meta = document.createElement('div');
+      meta.className = 'chip-meta';
+      const name = document.createElement('div');
+      name.className = 'chip-name';
+      name.textContent = cat.label;
+      const detail = document.createElement('div');
+      detail.className = 'chip-detail';
+      detail.textContent = color && bg ? `${color} on ${bg}` : (color || bg || 'not styled');
+      meta.append(name, detail);
+
+      chip.append(sample, meta);
+      synWrap.append(chip);
+    });
+
+    const chromeWrap = document.getElementById('chips-chrome');
+    chromeWrap.innerHTML = '';
+    CHROME.forEach(c => {
+      const val = readVar(`--${c.key}`);
+      const chip = document.createElement('div');
+      chip.className = 'chip';
+
+      const sw = document.createElement('span');
+      sw.className = 'chip-swatch';
+      sw.style.backgroundColor = val;
+
+      const meta = document.createElement('div');
+      meta.className = 'chip-meta';
+      const name = document.createElement('div');
+      name.className = 'chip-name';
+      name.textContent = c.label;
+      const detail = document.createElement('div');
+      detail.className = 'chip-detail';
+      detail.textContent = val;
+      meta.append(name, detail);
+
+      chip.append(sw, meta);
+      chromeWrap.append(chip);
+    });
+  }
+
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.theme-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
+      EDITOR.dataset.theme = btn.dataset.themeBtn;
+      renderChips();
+    });
+  });
+
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.code-lines[data-pane]').forEach(p => { p.hidden = true; });
+      document.querySelector(`.code-lines[data-pane="${tab.dataset.tab}"]`).hidden = false;
+    });
+  });
+
+  renderChips();
+</script>
+</body>
+</html>

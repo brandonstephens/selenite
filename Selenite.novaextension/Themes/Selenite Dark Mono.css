@@ -1,12 +1,12 @@
 /*
- * Alabaster Dark Mono — ported from tonsky/sublime-scheme-alabaster
+ * Selenite Dark Mono — ported from tonsky/sublime-scheme-alabaster
  * Monochromatic dark variant. Body text sits at a dim grey; strings,
  * constants, definitions and brackets pop to a brighter white to stay
  * scannable without introducing hue.
  */
 
 meta {
-  -theme-display-name: 'Alabaster Dark Mono';
+  -theme-display-name: 'Selenite Dark Mono';
   -theme-interface-style: dark;
   -theme-vibrancy: none;
   -theme-accent-color: #CD974B;
@@ -76,7 +76,7 @@ meta.text.selected {
 }
 
 meta.cursor {
-  background-color: #CD974B;
+  background-color: #20425B;
 }
 
 meta.indentguide {
@@ -96,7 +96,7 @@ meta.gutter.selected {
 
 /* Comments */
 comment {
-  background-color: #333333;
+  background-color: #404040;
 }
 
 /* Strings */
@@ -110,7 +110,7 @@ regex {
 }
 string.escape,
 regex.escaped {
-  background-color: #ffffff20;
+  background-color: #ffffff34;
 }
 
 /* Constants — numbers, symbols, keywords, booleans */
@@ -138,7 +138,7 @@ definition.function,
 definition.method,
 identifier.global {
   color: #EEEEEE;
-  background-color: #333333;
+  background-color: #404040;
 }
 
 /* Brackets are brightened above the dim ambient body text */

@@ -1,12 +1,12 @@
 /*
- * Alabaster — ported from tonsky/sublime-scheme-alabaster
+ * Selenite — ported from tonsky/sublime-scheme-alabaster
  * Original scheme highlights just four things: strings, constants,
  * comments and global definitions. Standard keywords are intentionally
  * left unstyled.
  */
 
 meta {
-  -theme-display-name: 'Alabaster';
+  -theme-display-name: 'Selenite';
   -theme-interface-style: light;
   -theme-vibrancy: none;
   -theme-accent-color: #007ACC;
@@ -76,7 +76,7 @@ meta.text.selected {
 }
 
 meta.cursor {
-  background-color: #007ACC;
+  background-color: #E3F2FD;
 }
 
 meta.indentguide {
@@ -91,7 +91,7 @@ meta.gutter.selected {
 }
 
 /*
- * Syntax styles — the four Alabaster classes
+ * Syntax styles — the four Selenite classes
  */
 
 /* Comments */
