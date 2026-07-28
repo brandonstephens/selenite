@@ -2,7 +2,7 @@
   "identifier": "brandonstephens.Selenite",
   "name": "Selenite",
   "organization": "Brandon Stephens",
-  "description": "A color scheme with minimal amount of highlighting. Ported from Nikita Prokopov's Alabaster for Sublime Text. Includes light/dark variants of the Normal, BG and Mono styles.",
+  "description": "A color scheme with minimal amount of highlighting. Ported from Nikita Prokopov's Alabaster for Sublime Text. Includes light/dark variants of the Full and Mono styles.",
   "repository": "",
   "version": "1.0.0",
   "categories": ["themes"]

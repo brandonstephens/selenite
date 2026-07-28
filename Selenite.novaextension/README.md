@@ -16,16 +16,16 @@ Everything else — including standard language keywords like `if`, `else`,
 
 ## Included themes
 
-Six variants, covering light/dark for each of the three upstream styles:
+Four variants, covering light/dark for two of Alabaster's three upstream
+styles — Full and Mono. (Normal isn't included in this port.)
 
 | Style  | Light               | Dark                     |
 |--------|---------------------|---------------------------|
-| Normal | Selenite            | Selenite Dark             |
-| BG     | Selenite BG          | Selenite Dark BG *        |
+| Full   | Selenite Full        | Selenite Dark Full *      |
 | Mono   | Selenite Mono        | Selenite Dark Mono        |
 
-`*` **Selenite Dark BG does not exist upstream** — the original repo only
-ships a light BG variant. This port constructs a dark counterpart by
+`*` **Selenite Dark Full does not exist upstream** — the original repo only
+ships a light Full/BG variant. This port constructs a dark counterpart by
 applying the same idea (tinted backgrounds instead of colored text) to
 Selenite Dark's palette, so it's an original addition rather than a direct
 port. Everything else is a faithful translation of the upstream
@@ -69,7 +69,9 @@ sit quietly next to each variant's editor palette.
 Original color scheme and design philosophy: [Nikita
 Prokopov](https://github.com/tonsky). See the [upstream
 README](https://github.com/tonsky/sublime-scheme-alabaster) for the full
-rationale behind Alabaster's minimal approach.
+rationale behind Alabaster's minimal approach, and his essay [Syntax
+Highlighting](https://tonsky.me/blog/syntax-highlighting/) for the broader
+argument behind coloring only a few categories of tokens.
 
 ## License
 

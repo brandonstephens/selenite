@@ -140,10 +140,59 @@ identifier.global {
   background-color: #EEEEEE;
 }
 
+/* Brackets & operators — dimmed relative to body text, a step lighter than
+   comments' grey for a subtler touch */
+bracket,
+operator,
+keyword.operator {
+  color: #B3B3B3;
+}
+
 /* Mistakes */
 invalid {
   color: #cc3333;
   background-color: #FFE4E4;
+}
+
+/*
+ * Markdown — heading and list markers and link brackets dim like
+ * punctuation (Nova doesn't scope blockquote markers, so ">" can't be
+ * dimmed); heading and link text stays in the default text color;
+ * inline code reuses the string treatment
+ */
+markup.heading,
+markup.bold,
+markup.italic,
+markup.strikethrough,
+markup.link,
+markup.link-label,
+markup.link-label.value.number,
+link {
+  color: #000000;
+}
+markup.bold,
+markup.italic,
+markup.strikethrough {
+  font-weight: normal;
+  font-style: normal;
+}
+markup.strikethrough {
+  text-decoration: line-through;
+}
+markup.heading.prefix,
+markup.line,
+markup.list.item,
+markup.bold.delimiter,
+markup.italic.delimiter,
+markup.strikethrough.delimiter,
+markup.link-label.bracket,
+markup.code-block.delimiter,
+markup.code-block.language {
+  color: #B3B3B3;
+}
+markup.code,
+markup.code.delimiter {
+  background-color: #EEEEEE;
 }
 
 /*

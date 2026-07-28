@@ -1,8 +1,9 @@
 /*
  * Selenite Dark Mono — ported from tonsky/sublime-scheme-alabaster
  * Monochromatic dark variant. Body text sits at a dim grey; strings,
- * constants, definitions and brackets pop to a brighter white to stay
- * scannable without introducing hue.
+ * constants and definitions pop to a brighter white to stay scannable
+ * without introducing hue, while brackets and operators dim below body
+ * text.
  */
 
 meta {
@@ -141,15 +142,59 @@ identifier.global {
   background-color: #404040;
 }
 
-/* Brackets are brightened above the dim ambient body text */
-bracket {
-  color: #EEEEEE;
+/* Brackets & operators — dimmed relative to body text, a darker step down
+   from Selenite Dark's punctuation grey (matches Selenite Dark Full) */
+bracket,
+operator,
+keyword.operator {
+  color: #5B5E5F;
 }
 
 /* Mistakes */
 invalid {
   color: #cc3333;
   background-color: #2B1D1E;
+}
+
+/*
+ * Markdown — heading and list markers and link brackets dim like
+ * punctuation (Nova doesn't scope blockquote markers, so ">" can't be
+ * dimmed); heading and link text stays in the default text color;
+ * inline code reuses the string treatment
+ */
+markup.heading,
+markup.bold,
+markup.italic,
+markup.strikethrough,
+markup.link,
+markup.link-label,
+markup.link-label.value.number,
+link {
+  color: #999999;
+}
+markup.bold,
+markup.italic,
+markup.strikethrough {
+  font-weight: normal;
+  font-style: normal;
+}
+markup.strikethrough {
+  text-decoration: line-through;
+}
+markup.heading.prefix,
+markup.line,
+markup.list.item,
+markup.bold.delimiter,
+markup.italic.delimiter,
+markup.strikethrough.delimiter,
+markup.link-label.bracket,
+markup.code-block.delimiter,
+markup.code-block.language {
+  color: #5B5E5F;
+}
+markup.code,
+markup.code.delimiter {
+  color: #EEEEEE;
 }
 
 /*
