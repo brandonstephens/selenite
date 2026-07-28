@@ -151,11 +151,12 @@ identifier.global {
 /* Brackets & operators — dimmed relative to body text, a darker step down
    from Selenite Dark's punctuation grey (fg at 40% opacity over the
    near-black document background, matching upstream Alabaster Dark's own
-   more subtle "inner brackets" formula) */
+   more subtle "inner brackets" formula), pulled a step further toward the
+   document background for a subtler feel */
 bracket,
 operator,
 keyword.operator {
-  color: #5B5E5F;
+  color: #4B4D4E;
 }
 
 /* Mistakes */
@@ -165,16 +166,15 @@ invalid {
 }
 
 /*
- * Markdown — heading and list markers and link brackets dim like
- * punctuation (Nova doesn't scope blockquote markers, so ">" can't be
- * dimmed); heading and link text stays in the default text color;
- * inline code reuses the string treatment
+ * Markdown — heading and list markers, link/image brackets, and link/image
+ * URLs dim like punctuation (Nova doesn't scope blockquote markers, so ">"
+ * can't be dimmed); heading and link label text stays in the default text
+ * color; inline code reuses the string treatment
  */
 markup.heading,
 markup.bold,
 markup.italic,
 markup.strikethrough,
-markup.link,
 markup.link-label,
 markup.link-label.value.number,
 link {
@@ -195,10 +195,11 @@ markup.list.item,
 markup.bold.delimiter,
 markup.italic.delimiter,
 markup.strikethrough.delimiter,
+markup.link,
 markup.link-label.bracket,
 markup.code-block.delimiter,
 markup.code-block.language {
-  color: #5B5E5F;
+  color: #4B4D4E;
 }
 markup.code,
 markup.code.delimiter {

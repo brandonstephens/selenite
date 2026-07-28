@@ -22,3 +22,8 @@
   Alabaster BG leaves constants as colored text (its own background rule
   for this is present but commented out); we use that unused magenta tint
   instead for consistency across the Full variants.
+- Lightened brackets/operators for a subtler feel in all four variants —
+  moved further toward the document background (paler grey on the light
+  variants, darker/closer-to-background grey on the dark ones), and moved
+  Markdown link/image URLs (`markup.link`) into that same dimmed treatment
+  so only the label/alt text stays in body color.

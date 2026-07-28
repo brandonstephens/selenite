@@ -144,13 +144,13 @@ identifier.global {
   background-color: #DBF1FF;
 }
 
-/* Brackets & operators — dimmed relative to body text, matching upstream
-   Alabaster BG's own lighter "inner brackets" punctuation rule (#00000075
-   flattened over the white doc background) */
+/* Brackets & operators — dimmed relative to body text, lightened a step
+   past upstream Alabaster BG's "inner brackets" punctuation rule
+   (#00000075 flattened over the white doc background) for a subtler feel */
 bracket,
 operator,
 keyword.operator {
-  color: #8A8A8A;
+  color: #A8A8A8;
 }
 
 /* Mistakes */
@@ -160,16 +160,15 @@ invalid {
 }
 
 /*
- * Markdown — heading and list markers and link brackets dim like
- * punctuation (Nova doesn't scope blockquote markers, so ">" can't be
- * dimmed); heading and link text stays in the default text color;
- * inline code reuses the string treatment
+ * Markdown — heading and list markers, link/image brackets, and link/image
+ * URLs dim like punctuation (Nova doesn't scope blockquote markers, so ">"
+ * can't be dimmed); heading and link label text stays in the default text
+ * color; inline code reuses the string treatment
  */
 markup.heading,
 markup.bold,
 markup.italic,
 markup.strikethrough,
-markup.link,
 markup.link-label,
 markup.link-label.value.number,
 link {
@@ -190,10 +189,11 @@ markup.list.item,
 markup.bold.delimiter,
 markup.italic.delimiter,
 markup.strikethrough.delimiter,
+markup.link,
 markup.link-label.bracket,
 markup.code-block.delimiter,
 markup.code-block.language {
-  color: #8A8A8A;
+  color: #A8A8A8;
 }
 markup.code,
 markup.code.delimiter {
