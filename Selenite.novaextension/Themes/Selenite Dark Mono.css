@@ -84,6 +84,10 @@ meta.indentguide {
   border-color: #232323;
 }
 
+meta.text.invisible {
+  color: #4B4D4E;
+}
+
 meta.gutter {
   color: #4A4A4A;
 }
