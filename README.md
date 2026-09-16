@@ -24,3 +24,16 @@ Theme based on [Tonksy](https://tonsky.me/blog/syntax-highlighting/).
 - [ ] ghosty theme
 - [ ] drop normal variant (keep bg and mono)
 - [ ] list old versions of the Nova and Ghostty themes on the demo page, with deep links to each
+
+## Site & downloads
+
+The demo page is published to https://brandonstephens.github.io/selenite/ by
+the `Deploy Pages` GitHub Action (`.github/workflows/pages.yml`), which runs on
+every push to `master`. It calls `./build-site.sh`, which copies `index.html` and
+`demo.html` into `_site/` and builds the downloads linked from the demo page:
+
+- `selenite-nova.zip` — `Selenite.novaextension`; double-click it after unzipping to install in Nova
+- `selenite-ghostty.zip` — the Ghostty theme files and their install README
+
+Run `./build-site.sh` locally to preview the output in `_site/` (gitignored).
+To redeploy without a code change, run the workflow manually from the Actions tab.
